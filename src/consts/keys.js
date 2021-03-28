@@ -1,0 +1,13 @@
+export const KEY_ARROW_LEFT = 37;
+export const KEY_ARROW_UP = 38;
+export const KEY_ARROW_RIGHT = 39;
+export const KEY_ARROW_DOWN = 40;
+export const KEY_A = 65;
+export const KEY_W = 87;
+export const KEY_D = 68;
+export const KEY_S = 83;
+export const KEY_NP_ARROW_LEFT = 4;
+export const KEY_NP_ARROW_UP = 8;
+export const KEY_NP_ARROW_RIGHT = 6;
+export const KEY_NP_ARROW_DOWN = 2;
+export const KEY_ENTER = 13;

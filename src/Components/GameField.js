@@ -1,22 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newPiece } from "../redux-store/food";
-
-// Stores previous values
-const usePrevious = (value) => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-};
+import { consumeFood } from "../redux-store/snake";
 
 const GameField = () => {
   const dispatch = useDispatch();
   const canvas = useRef(null);
 
   const foodCoords = useSelector((store) => store.food);
-  const prevFoodCoords = usePrevious(foodCoords);
   let [foodCoordsX, foodCoordsY] = foodCoords;
 
   const snakeCoords = useSelector((store) => store.snake.bodyPosition);
@@ -25,16 +16,10 @@ const GameField = () => {
   snakeCoords.forEach((snake) => {
     const [x, y] = snake;
     if (x === foodCoordsX && y === foodCoordsY) {
+      dispatch(consumeFood());
       dispatch(newPiece());
     }
   });
-
-  // Prevents spawning food on food
-  if (foodCoords === prevFoodCoords) {
-    console.log(`MATCHING FOOD COORDS!`);
-    console.log(`/////////////////////`);
-    dispatch(newPiece());
-  }
 
   // Converts coords into pixels
   const placeFoodOnCanvas = (x, y) => {
@@ -49,7 +34,7 @@ const GameField = () => {
 
   useEffect(() => {
     const ctx = canvas.current.getContext("2d");
-
+    // Grid for better dev experience
     const drawX = () => {
       for (let x = 0; x < 500; x += 50) {
         ctx.moveTo(x, 0);
@@ -82,9 +67,6 @@ const GameField = () => {
 
   return (
     <div>
-      <button onClick={() => dispatch(newPiece())} type="button">
-        test
-      </button>
       <canvas
         ref={canvas}
         width={500}

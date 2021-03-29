@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { gridSize } from "../../consts/gamerules";
+import { gridSize } from "../../constants/gamerules";
 
 const randomCell = () => Math.floor(Math.random() * gridSize);
 

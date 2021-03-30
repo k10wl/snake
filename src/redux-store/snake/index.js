@@ -10,6 +10,7 @@ const snakeSlice = createSlice({
     ],
     tail: [],
     moveDirection: "RIGHT",
+    lastStep: "RIGHT",
   },
   reducers: {
     moveDirectionUp: (state) => {
@@ -36,6 +37,8 @@ const snakeSlice = createSlice({
       state.bodyPosition.splice(0, 0, [x, y]);
       state.tail = state.bodyPosition[state.bodyPosition.length - 1];
       state.bodyPosition.pop();
+
+      state.lastStep = state.moveDirection;
     },
     consumeFood: (state) => {
       state.bodyPosition.push(state.tail);

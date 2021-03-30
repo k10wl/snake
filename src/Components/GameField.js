@@ -8,7 +8,7 @@ const GameField = () => {
   const canvas = useRef(null);
 
   const foodCoords = useSelector((store) => store.food);
-  let [foodCoordsX, foodCoordsY] = foodCoords;
+  const [foodCoordsX, foodCoordsY] = foodCoords;
 
   const snakeCoords = useSelector((store) => store.snake.bodyPosition);
 
@@ -21,48 +21,39 @@ const GameField = () => {
     }
   });
 
-  // Converts coords into pixels
-  const placeFoodOnCanvas = (x, y) => {
-    foodCoordsX = x * 50;
-    foodCoordsY = y * 50;
-    return {
-      foodCoordsX,
-      foodCoordsY,
-    };
-  };
-  placeFoodOnCanvas(foodCoordsX, foodCoordsY);
-
   useEffect(() => {
     const ctx = canvas.current.getContext("2d");
-    // Grid for better dev experience
-    const drawX = () => {
-      for (let x = 0; x < 500; x += 50) {
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, 500);
-      }
-    };
-    const drawY = () => {
-      for (let y = 0; y < 500; y += 50) {
-        ctx.moveTo(0, y);
-        ctx.lineTo(500, y);
-      }
-    };
 
-    ctx.clearRect(0, 0, 500, 500);
+    ctx.fillStyle = "rgb(122, 162, 82)";
+    ctx.fillRect(0, 0, 500, 500);
+    ctx.strokeStyle = "rgb(34, 34, 34)";
     ctx.strokeRect(0, 0, 500, 500);
+    ctx.fillStyle = "rgb(34, 34, 34)";
 
-    ctx.beginPath();
-    drawX();
-    drawY();
-    ctx.stroke();
+    const renderFood = (x, y) => {
+      let pixelsX = x;
+      let pixelsY = y;
+      pixelsX *= 50;
+      pixelsY *= 50;
+      ctx.fillRect(pixelsX + 1 + 16, pixelsY + 1, 16, 16);
+      ctx.fillRect(pixelsX + 1, pixelsY + 1 + 16, 16, 16);
+      ctx.fillRect(pixelsX + 1 + 32, pixelsY + 16, 16, 16);
+      ctx.fillRect(pixelsX + 1 + 16, pixelsY + 1 + 32, 16, 16);
+    };
+    renderFood(foodCoordsX, foodCoordsY);
 
-    ctx.fillRect(foodCoordsX, foodCoordsY, 50, 50);
-
-    // Render snake
-    snakeCoords.forEach((snake) => {
-      const [x, y] = snake;
-      return ctx.fillRect(x * 50, y * 50, 50, 50);
-    });
+    const renderSnake = () => {
+      snakeCoords.forEach((snake) => {
+        let [x, y] = snake;
+        x *= 50;
+        y *= 50;
+        ctx.fillRect(x + 2, y + 2, 22, 22);
+        ctx.fillRect(x + 26, y + 2, 22, 22);
+        ctx.fillRect(x + 2, y + 26, 22, 22);
+        ctx.fillRect(x + 26, y + 26, 22, 22);
+      });
+    };
+    renderSnake();
   });
 
   return (

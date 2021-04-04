@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@font-face {
+    font-family: 'Pixeboy';
+    src: url("fonts/Pixeboy-z8XGD.ttf") format('truetype');
+}
+
+$base-color: #7AA252;
+$primary-color: #222222;
+
+$font-8bit: "Press Start 2P", cursive;
+$font-score: 'Pixeboy', sans-serif;
+
+
+body {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: $base-color;
+    font-family: $font-score;
+    // Is there any cross-browsing support tool for those kind of stuff so i dont need to remember all of it?
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.starting-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        color: $primary-color;
+        background-color: $base-color;
+        padding: 0.5rem;
+        outline: none;
+        border: none;
+        font-family: $font-8bit;
+        font-size: 1.5rem;
+        width: 300px;
+        transition: 0.1s;
+        &:hover {
+            z-index: 1;
+            cursor: pointer;
+            background-color: $primary-color;
+            color: $base-color;
+            transform: scale(1.05);
+            transition: 0.1s;
+        }
+    }
+}
+
+
+.game-field {
+    position: relative;
+
+    .game-field--canvas {
+        margin: 0 !important;
+    }
+    .game-field--score {
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        width: auto;
+    }
+    .game-field--score--box{
+        position: absolute;
+        top: 14px;
+        left: -24px;
+        background-color: transparent;
+        height: 24px;
+        width: 24px;
+
+        border-bottom: 24px solid transparent;
+        border-right: 24px solid $primary-color;
+    }
+    .game-field--score--text {
+        text-align: center;
+        transform: translateY(60%);
+        position: relative;
+        background-color: $primary-color;
+        color: $base-color;
+        padding: 0 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 100ms linear;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 100ms, opacity 100ms linear;
+}
+
+
+.popout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba($primary-color, 0.25);
+
+    .popout--box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 450px;
+        max-width: 700px;
+        padding: 2rem;
+        background-color: rgba($primary-color, 0.95);
+        text-align: center;
+        font-size: 2.5rem;
+        font-family: $font-8bit;
+
+        p {
+            color: $base-color;
+            padding-bottom: 2rem;
+        }
+        p.info {
+            font-size: 1rem;
+            padding: 0 1rem;
+            text-align: left;
+            span {
+                float: right;
+            }
+        }
+        .speed-range-settings {
+            transform: scaleX(-1)
+        }
+        button {
+            background-color: transparent;
+            color: rgba($base-color, 0.3);
+            &:hover, &:focus{
+                color: $base-color ;
+            }
+        }
+    }
+}

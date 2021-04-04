@@ -1,17 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  bodyPosition: [
+    [4, 5],
+    [3, 5],
+    [2, 5],
+  ],
+  tail: [],
+  moveDirection: "RIGHT",
+  lastStep: "RIGHT",
+  alive: true,
+};
+
 const snakeSlice = createSlice({
   name: "snake",
-  initialState: {
-    bodyPosition: [
-      [7, 5],
-      [6, 5],
-      [5, 5],
-    ],
-    tail: [],
-    moveDirection: "RIGHT",
-    lastStep: "RIGHT",
-  },
+  initialState,
   reducers: {
     moveDirectionUp: (state) => {
       state.moveDirection = "UP";
@@ -43,6 +46,10 @@ const snakeSlice = createSlice({
     consumeFood: (state) => {
       state.bodyPosition.push(state.tail);
     },
+    killSnake: (state) => {
+      state.alive = false;
+    },
+    resetGame: () => initialState,
   },
 });
 
@@ -55,4 +62,6 @@ export const {
   moveDirectionLeft,
   startMovement,
   consumeFood,
+  killSnake,
+  resetGame,
 } = snakeSlice.actions;

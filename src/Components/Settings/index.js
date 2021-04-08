@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { changeGameSpeed } from "../redux-store/gamerules";
+import { changeGameSpeed } from "../../redux-store/gamerules";
 
 const Settings = () => {
   const dispatch = useDispatch();

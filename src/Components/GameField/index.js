@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { newPiece, preventSpawnOnLastPlace } from "../redux-store/food";
-import * as snake from "../redux-store/snake";
-import { addOneToScore, resetScore } from "../redux-store/score";
-import FinalScore from "./FinalScore";
-import Pause from "./Pause";
-import { addToScoreboard } from "../redux-store/scoreboard";
+import { newPiece, preventSpawnOnLastPlace } from "../../redux-store/food";
+import * as snake from "../../redux-store/snake";
+import { addOneToScore, resetScore } from "../../redux-store/score";
+import FinalScore from "../FinalScore";
+import Pause from "../Pause";
+import { addToScoreboard } from "../../redux-store/scoreboard";
 
 const GameField = () => {
   const dispatch = useDispatch();

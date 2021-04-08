@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import StaringMenu from "./StartingMenu";
-import GameField from "./GameField";
-import Scoreboard from "./Scoreboard";
-import Settings from "./Settings";
-import bindKeys from "../constants/keys";
-import * as snake from "../redux-store/snake";
+import StaringMenu from "../StartingMenu";
+import GameField from "../GameField";
+import Scoreboard from "../Scoreboard";
+import Settings from "../Settings";
+import bindKeys from "../../constants/keys";
+import * as snake from "../../redux-store/snake";
 
 const App = () => {
   const dispatch = useDispatch();

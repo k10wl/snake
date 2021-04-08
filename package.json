@@ -26,7 +26,8 @@
       "src/**/*.js",
       "!src/**/*.stories.js",
       "!src/__test__/*.js",
-      "!src/index.js"
+      "!src/index.js",
+      "!src/reportWebVitals.js"
     ],
     "coverageThreshold": {
       "global": {

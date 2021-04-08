@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FinalScore component should match snapshot 1`] = `
+<div
+  className="popout"
+>
+  <div
+    className="popout--box"
+  >
+    <p>
+      You scored 
+      1
+       point
+      !
+    </p>
+    <button
+      onClick={[MockFunction]}
+      type="button"
+    >
+      Play again
+    </button>
+    <Link
+      to="/"
+    >
+      <button
+        type="button"
+      >
+        Main menu
+      </button>
+    </Link>
+  </div>
+</div>
+`;

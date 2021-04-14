@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { resetGame } from "../../redux-store/snake";
 import { resetScore } from "../../redux-store/score";
-import { newPiece } from "../../redux-store/food";
+import { createNewFoodCoords } from "../../redux-store/food";
 
 const StaringMenu = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const StaringMenu = () => {
           onClick={() => {
             dispatch(resetGame());
             dispatch(resetScore());
-            dispatch(newPiece());
+            dispatch(createNewFoodCoords());
           }}
           type="button"
         >

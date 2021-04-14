@@ -16,10 +16,14 @@ const Scoreboard = () => {
     <div className="popout">
       <div className="popout--box">
         <p>Highest scores:</p>
-        {scoreboard.map((score) => {
-          const [number, points] = score;
-          return <UserScore score={points} number={number} />;
-        })}
+        {scoreboard.length > 0 ? (
+          scoreboard.map((score) => {
+            const number = scoreboard.indexOf(score) + 1;
+            return <UserScore key={number} score={score} number={number} />;
+          })
+        ) : (
+          <p>No scores</p>
+        )}
         <Link to="/">
           <button type="button">Main menu</button>
         </Link>

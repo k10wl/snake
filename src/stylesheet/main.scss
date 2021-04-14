@@ -66,7 +66,7 @@ body {
     position: relative;
 
     .game-field--canvas {
-        margin: 0 !important;
+        border: 1px solid $primary-color;
     }
     .game-field--score {
         position: absolute;
@@ -141,9 +141,6 @@ body {
             span {
                 float: right;
             }
-        }
-        .speed-range-settings {
-            transform: scaleX(-1)
         }
         button {
             background-color: transparent;

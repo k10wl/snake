@@ -1,26 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import * as snake from "../../redux-store/snake";
+import { resetScore } from "../../redux-store/score";
+import { createNewFoodCoords } from "../../redux-store/food";
 
-const FinalScore = ({ restart, score }) => (
-  <div className="popout">
-    <div className="popout--box">
-      <p>
-        You scored {score} point{score !== 1 && `s`}!
-      </p>
-      <button onClick={restart} type="button">
-        Play again
-      </button>
-      <Link to="/">
-        <button type="button">Main menu</button>
-      </Link>
+const FinalScore = ({ score }) => {
+  const dispatch = useDispatch();
+  return (
+    <div className="popout">
+      <div className="popout--box">
+        <p>
+          You scored {score} point{score !== 1 && `s`}!
+        </p>
+        <button
+          onClick={() => {
+            dispatch(snake.resetGame());
+            dispatch(resetScore());
+            dispatch(createNewFoodCoords());
+          }}
+          type="button"
+        >
+          Play again
+        </button>
+        <Link to="/">
+          <button type="button">Main menu</button>
+        </Link>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default FinalScore;
 
 FinalScore.propTypes = {
-  restart: PropTypes.func.isRequired,
   score: PropTypes.number.isRequired,
 };

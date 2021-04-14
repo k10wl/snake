@@ -9,16 +9,15 @@ const foodSlice = createSlice({
     prevFoodCoords: [1, 1],
   },
   reducers: {
-    newPiece: (state) => {
+    createNewFoodCoords: (state) => {
       state.foodCoords = state.foodCoords.map(() => randomCell());
     },
-    preventSpawnOnLastPlace: (state) => {
+    storePrevFoodCoords: (state) => {
       state.prevFoodCoords = state.foodCoords;
-      state.foodCoords = state.foodCoords.map(() => randomCell());
     },
   },
 });
 
 export default foodSlice;
 
-export const { newPiece, preventSpawnOnLastPlace } = foodSlice.actions;
+export const { createNewFoodCoords, storePrevFoodCoords } = foodSlice.actions;

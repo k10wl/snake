@@ -5,7 +5,9 @@ const scoreboardSlice = createSlice({
   initialState: [],
   reducers: {
     addToScoreboard: (state, action) => {
-      state.push([state.length + 1, action.payload]);
+      state.push(action.payload);
+      state.sort((a, b) => b - a);
+      if (state.length > 10) state.pop();
     },
   },
 });

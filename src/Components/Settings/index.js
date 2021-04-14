@@ -30,10 +30,9 @@ const Settings = () => {
             step="20"
             max="-100"
             value={value}
-            onChange={(e) => {
-              console.log(e.target.value);
-              setValue(e.target.value);
-            }}
+            onChange={(e) =>
+              setValue(e.target.value)
+            }
             onMouseUp={() => dispatch(changeGameSpeed(value * -1))}
             type="range"
           />

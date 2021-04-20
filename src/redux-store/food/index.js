@@ -1,23 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const randomCell = () => Math.floor(Math.random() * 10);
-
 const foodSlice = createSlice({
   name: "food",
   initialState: {
-    foodCoords: [1, 1],
-    prevFoodCoords: [1, 1],
+    foodCoords: [],
   },
   reducers: {
-    createNewFoodCoords: (state) => {
-      state.foodCoords = state.foodCoords.map(() => randomCell());
-    },
-    storePrevFoodCoords: (state) => {
-      state.prevFoodCoords = state.foodCoords;
+    newFood: (state, action) => {
+      state.foodCoords = action.payload;
     },
   },
 });
 
 export default foodSlice;
 
-export const { createNewFoodCoords, storePrevFoodCoords } = foodSlice.actions;
+export const { newFood } = foodSlice.actions;

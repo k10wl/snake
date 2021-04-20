@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment */
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as snake from "../../redux-store/snake";
@@ -16,7 +17,15 @@ const GameField = () => {
   const snakeMovementRef = useRef();
   const dispatch = useDispatch();
 
-  GameLogic(dispatch, alive, bodyPosition, foodCoords, prevFoodCoords, score);
+  const GameLogicParams = {
+    dispatch,
+    alive,
+    bodyPosition,
+    foodCoords,
+    prevFoodCoords,
+    score,
+  };
+  GameLogic(GameLogicParams);
 
   useEffect(() => {
     snakeMovementRef.current = setInterval(

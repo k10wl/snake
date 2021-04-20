@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import * as snake from "../../redux-store/snake";
 import { resetScore } from "../../redux-store/score";
-import { createNewFoodCoords } from "../../redux-store/food";
 
 const FinalScore = ({ score }) => {
   const dispatch = useDispatch();
@@ -18,7 +17,6 @@ const FinalScore = ({ score }) => {
           onClick={() => {
             dispatch(snake.resetGame());
             dispatch(resetScore());
-            dispatch(createNewFoodCoords());
           }}
           type="button"
         >

@@ -32,7 +32,9 @@ const GameField = () => {
       () => dispatch(snake.startMovement()),
       gameSpeed
     );
-    if (!alive) clearInterval(snakeMovementRef.current);
+    if (!alive) {
+      clearInterval(snakeMovementRef.current);
+    }
     return () => clearInterval(snakeMovementRef.current);
   }, [pause, alive, dispatch, gameSpeed]);
 
@@ -41,7 +43,9 @@ const GameField = () => {
       if (e.key === "Escape" || e.key === " ") changePause(!pause);
     };
     document.addEventListener("keydown", setPause);
-    if (alive && pause) clearInterval(snakeMovementRef.current);
+    if (alive && pause) {
+      clearInterval(snakeMovementRef.current);
+    }
     return () => document.removeEventListener("keydown", setPause);
   }, [alive, pause]);
 

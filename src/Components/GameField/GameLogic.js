@@ -76,17 +76,23 @@ const GameLogic = (params) => {
 
   const endGame = useCallback(() => {
     dispatch(snakeActions.killSnake());
-    if (score > 0) dispatch(scoreboardAction.addToScoreboard(score));
+    if (score > 0) {
+      dispatch(scoreboardAction.addToScoreboard(score));
+    }
   }, [dispatch, score]);
 
   const endGameConditions = useCallback(
     (snakeIsAlive, snakeCoords) => {
       const [[headX, headY], ...bodyCoords] = snakeCoords;
-      if (!snakeIsAlive) return;
+      if (!snakeIsAlive) {
+        return;
+      }
       if (headX < 0 || headY < 0 || headX > 9 || headY > 9) endGame();
       bodyCoords.forEach((bodySlice) => {
         const [bodyX, bodyY] = bodySlice;
-        if (headX === bodyX && headY === bodyY) endGame();
+        if (headX === bodyX && headY === bodyY) {
+          endGame();
+        }
       });
     },
     [endGame]

@@ -11,15 +11,17 @@ const UserScore = ({ number, score }) => (
 
 const Scoreboard = () => {
   const scoreboard = useSelector((state) => state.scoreboard);
-
+  let scoreCount = 0;
   return (
     <div className="popout">
       <div className="popout--box">
         <p>Highest scores:</p>
         {scoreboard.length > 0 ? (
           scoreboard.map((score) => {
-            const number = scoreboard.indexOf(score) + 1;
-            return <UserScore key={number} score={score} number={number} />;
+            scoreCount += 1;
+            return (
+              <UserScore key={scoreCount} score={score} number={scoreCount} />
+            );
           })
         ) : (
           <p>No scores</p>
